@@ -1,10 +1,10 @@
-# 获取 ckpt 模型的节点名称
 import os
 from tensorflow.python import pywrap_tensorflow
 import tensorflow as tf
 # model_path = './tensorflow_inception_graph.pb'
 model_path = './inception_v3.ckpt'
 if model_path.split('.')[-1] == 'ckpt':
+    # 获取 ckpt 模型的节点名称
     reader = pywrap_tensorflow.NewCheckpointReader(model_path)
     var_to_sahpe_map = reader.get_variable_to_shape_map()
     for key in var_to_sahpe_map:
