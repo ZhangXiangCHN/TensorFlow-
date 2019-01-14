@@ -43,7 +43,7 @@ loss = calc_loss(logit, label_batch)
 train_step = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)
 
 with tf.Session() as sess:
-    init = tf.global_variables_initializer()
+    init = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
     sess.run(init)
 
     coord = tf.train.Coordinator()
