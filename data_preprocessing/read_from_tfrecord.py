@@ -1,3 +1,4 @@
+# 解析TFRecord 文件
 import tensorflow as tf
 
 reader = tf.TFRecordReader()
