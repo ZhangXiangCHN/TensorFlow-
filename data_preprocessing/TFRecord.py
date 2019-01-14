@@ -30,5 +30,3 @@ for index in range(num_examples):
                         'image_raw':_bytes_feature(image_raw)}))
     writer.write(example.SerializeToString())
 writer.close()
-
-# 解析TFRecord 文件
