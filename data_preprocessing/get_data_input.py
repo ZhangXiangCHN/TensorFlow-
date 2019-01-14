@@ -39,7 +39,7 @@ image_batch, label_batch = tf.train.shuffle_batch([distorted_image, label],
 # train op
 learning_rate = 0.01
 logit = inference(image_batch)   # 网络 model inference
-loss = calc_loss(logit, label_batch)
+loss = calc_loss(logit, label_batch)   # 计算loss
 train_step = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)
 
 with tf.Session() as sess:
