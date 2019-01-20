@@ -77,9 +77,9 @@ def main():
         logits, _ = inception_v3.inception_v3(images, num_classes=N_CLASSES, is_training=True)
 
     # 获取需要训练的变量
-    # trainable_variables = get_trainable_variables()   # 变量没有使用 trainable_variables
+    trainable_variables = get_trainable_variables()   # minimize 中用到 trainable_variables
     tf.losses.softmax_cross_entropy(tf.one_hot(labels, N_CLASSES), logits, weights=1.0)
-    train_step = tf.train.RMSPropOptimizer(LEARNING_RATE).minimize(tf.losses.get_total_loss())
+    train_step = tf.train.RMSPropOptimizer(LEARNING_RATE).minimize(tf.losses.get_total_loss(), var_list=trainable_variables)
 
     with tf.name_scope('evaluation'):
         correct_prediction = tf.equal(tf.argmax(logits, 1), labels)
